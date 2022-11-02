@@ -7,8 +7,6 @@ dotenv.config();
 const app = express();
 const Port = process.env.PORT;
 
-console.log("Password = ",process.env.PASSWORD);
-
 
 const Start = async()=>{
     try{
