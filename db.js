@@ -9,7 +9,7 @@ const ConnectionDB = (url)=>{
         {
             useNewUrlParser:true,
             useUnifiedTopology:true 
-        })
+        });
 };
 
 export default ConnectionDB;
