@@ -10,6 +10,8 @@ router.get('/',(req,res)=>{
 router.post('create-user',(req,res)=>{
    res.json("I am creating the user");
 });
+
+
 router.get('/',(req,res)=>{
     res.send("Hi I am from Router");
 });
