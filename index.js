@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import ConnectionDB from './db.js';
+import router from './router.js';
 
 dotenv.config();
 
@@ -9,6 +10,8 @@ const Port = process.env.PORT;
 
 
 //seeding data to product collection
+
+app.use('/',router);
 
 const Start = async () => {
     // server setup
