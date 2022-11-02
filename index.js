@@ -9,6 +9,7 @@ const Port = process.env.PORT;
 
 
 const Start = async()=>{
+    // server setup
     try{
         await ConnectionDB(`mongodb+srv://mepujan:${process.env.PASSWORD}@cluster0.ve2tabd.mongodb.net/?retryWrites=true&w=majority`);
         app.listen(Port,() => {console.log(`Server is running at port: ${Port}`)});
