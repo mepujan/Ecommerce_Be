@@ -2,11 +2,13 @@ import express from 'express';
 import ConnectionDB from './db.js';
 import config  from './configurations/config.js';
 import routes from './routers/brand.js';
+import vendorRoutes from './routers/vendors.js';
 import { ErrorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 app.use(express.json());
 app.use(routes);
+app.use(vendorRoutes);
 app.use(ErrorHandler);
 
 const Start = async () => {
