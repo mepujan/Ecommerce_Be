@@ -1,7 +1,7 @@
 import multer from 'multer';
 import path from 'path';
 
-
+//saves product images inside images/product_images directory
 export const ProductStorage = multer.diskStorage({
     destination: (req,file,cb)=>{
         cb(null,'images/products_images');
@@ -12,6 +12,8 @@ export const ProductStorage = multer.diskStorage({
 
 })
 
+
+//saves user images inside images/product_images directory
 export const ProfilePictureStorage = multer.diskStorage({
     destination: (req,file,cb)=>{
         cb(null,'images/profile_picture');
