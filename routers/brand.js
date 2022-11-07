@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import express from 'express';
 import { BrandController } from '../controllers/brand.js';
 import { BrandValidations } from '../Validation/brand.js';
 import {validate} from 'express-validation';
