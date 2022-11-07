@@ -9,7 +9,7 @@ const brandController = new BrandController();
 routes.post('/brand/create',validate(BrandValidations.CreateOrUpdateBrandValidator),brandController.CreateNewBrand);
 routes.get("/brands",brandController.GetAllBrandsList);
 routes.get("/brand/id",brandController.GetBrandById);
-routes.put("/brand/update",brandController.UpdateBrandbyId);
+routes.put("/brand/update",validate(BrandValidations.CreateOrUpdateBrandValidator),brandController.UpdateBrandbyId);
 routes.delete("/brand/delete",brandController.DeleteBrandById);
 
 export default routes;
