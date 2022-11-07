@@ -1,11 +1,13 @@
 import express from 'express';
 import ConnectionDB from './db.js';
 import config  from './configurations/config.js';
-import routes from './routers/brand.js'
+import routes from './routers/brand.js';
+import { ErrorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 app.use(express.json());
 app.use(routes);
+app.use(ErrorHandler);
 
 const Start = async () => {
     // server setup
