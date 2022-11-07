@@ -61,6 +61,9 @@ export class BrandController{
     }
 
     async DeleteBrandById(req,res,next){
+        /**
+         * functions sends the deleted data information to the user
+         */
         const result = await brand.DeleteBrandById(req.query.id);
         if(result){
             res.send(result);

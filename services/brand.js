@@ -32,6 +32,10 @@ export class BrandService{
     }
 
     async DeleteBrandById(id){
+        /**!SECTION
+         * function that find and deletes the data of brand model
+         * and return the instances of deleted data.
+         */
         return await Brand.findByIdAndDelete(id);
     }
 }
