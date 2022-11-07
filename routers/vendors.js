@@ -7,9 +7,9 @@ const vendorRoutes = express.Router();
 const vendorController = new VendorController();
 
 vendorRoutes.post("/vendor/create",validate(VendorValidations.CreateOrUpdateVendorValidator),vendorController.CreateNewVendor);
-vendorRoutes.get("/brands",vendorController.GetAllVendorsList);
-vendorRoutes.get("/brand/id",vendorController.GetVendorById);
-vendorRoutes.put("/brand/update",validate(VendorValidations.CreateOrUpdateVendorValidator),vendorController.UpdateVendorbyId);
-vendorRoutes.delete("/brand/delete",vendorController.DeleteVendorById);
+vendorRoutes.get("/vendors",vendorController.GetAllVendorsList);
+vendorRoutes.get("/vendor/id",vendorController.GetVendorById);
+vendorRoutes.put("/vendor/update",validate(VendorValidations.CreateOrUpdateVendorValidator),vendorController.UpdateVendorbyId);
+vendorRoutes.delete("/vendor/delete",vendorController.DeleteVendorById);
 
 export default vendorRoutes;

@@ -1,6 +1,7 @@
 import {
     BrandService
 } from '../services/brand.js';
+import { VendorServices } from '../services/vendor.js';
 const brand = new BrandService();
 
 
@@ -63,7 +64,7 @@ export class BrandController {
          * functions sends the deleted data information to the user
          */
         try{
-        const result = await brand.DeleteBrandById(req.query.id);
+        const result = await VendorServices.DeleteBrandById(req.query.id);
             res.send(result);
         } catch(error) {
             next(error);
