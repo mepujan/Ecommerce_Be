@@ -54,10 +54,13 @@ const UserSchema = new Schema({
         type: Date,
         required: true
     },
+    profile_picture_url:{
+        type:String,
+    },
     profile_picture: {
         type: Buffer,
-        contentType: String
+        contentType: String,
     }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+export default mongoose.model('User', UserSchema);

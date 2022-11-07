@@ -5,17 +5,20 @@ import routes from './routers/brand.js';
 import vendorRoutes from './routers/vendors.js';
 import { ErrorHandler } from './middleware/errorHandler.js';
 import bodyParser from 'body-parser';
+import userRouter from './routers/user.js';
 
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('images'));
 
 
 app.use(routes);
 app.use(vendorRoutes);
 app.use(ErrorHandler);
+app.use(userRouter);
 
 const Start = async () => {
     // server setup
