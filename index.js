@@ -4,9 +4,11 @@ import config  from './configurations/config.js';
 import routes from './routers/brand.js';
 import vendorRoutes from './routers/vendors.js';
 import { ErrorHandler } from './middleware/errorHandler.js';
+import bodyParser from 'body-parser';
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(routes);
 app.use(vendorRoutes);
 app.use(ErrorHandler);
