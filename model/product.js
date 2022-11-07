@@ -19,6 +19,10 @@ const ProductModelSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Brand'
     },
+    image : {
+        type:Buffer,
+        contentType: String,
+    },
     descriptions: String,
     product_slug: String,
     created_at: {

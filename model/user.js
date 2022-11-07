@@ -1,9 +1,7 @@
 import mongoose, {
     Schema
 } from "mongoose";
-import {
-    isEmail
-} from validator;
+import isEmail from 'validator/lib/isEmail.js';
 
 const UserSchema = new Schema({
     first_name: {
@@ -62,4 +60,4 @@ const UserSchema = new Schema({
     }
 });
 
-module.export = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);

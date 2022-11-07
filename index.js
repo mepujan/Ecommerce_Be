@@ -1,24 +1,19 @@
 import express from 'express';
-import dotenv from 'dotenv';
 import ConnectionDB from './db.js';
-import router from './router.js';
-
-dotenv.config();
+import config  from './configurations/config.js';
+import routes from './routers/brand.js'
 
 const app = express();
-const Port = process.env.PORT;
-
-
-//seeding data to product collection
-
-app.use('/',router);
+app.use(express.json());
+app.use(routes);
 
 const Start = async () => {
     // server setup
     try {
-        await ConnectionDB(`mongodb+srv://mepujan:${process.env.PASSWORD}@cluster0.ve2tabd.mongodb.net/?retryWrites=true&w=majority`);
-        app.listen(Port, () => {
-            console.log(`Server is running at port: ${Port}`)
+        await ConnectionDB(config.database_string);
+        app.listen(config.port, () => {
+            console.log("Successfully connected to the Database....");
+            console.log(`Server is running at port: ${config.port}`);
         });
     } catch (err) {
         console.log(err);
