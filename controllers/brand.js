@@ -1,75 +1,72 @@
-import { BrandService } from '../services/brand.js';
+import {
+    BrandService
+} from '../services/brand.js';
 const brand = new BrandService();
 
 
-export class BrandController{
-    async CreateNewBrand(req,res,next){
+export class BrandController {
+    async CreateNewBrand(req, res, next) {
         /*!SECTION
         function that takes req from the user or application and
         returns the data of saved instance to the user.
         */
-        const result = await brand.CreateNewBrand(req.body);
-        if(result){
+        try {
+            const result = await brand.CreateNewBrand(req.body);
             res.send(result);
-        }
-        else{
-            res.send('error');
+        } catch (error) {
+            next(error);
         }
     }
 
-    async GetAllBrandsList(req,res,next){
+    async GetAllBrandsList(req, res, next) {
         /**
          * function that returns all the brand list result to the user or the application 
          * calling the api
          */
-        const results = await brand.GetAllBrandsList();
-        if(results){
-            res.send(results);
+        try {
+            const results = await brand.GetAllBrandsList();
+            res.send(results)
+        } catch (error) {
+            next(error);
         }
-        else{
-            res.send("error");
-        }
+
     }
 
 
-    async GetBrandById(req,res,next){
+    async GetBrandById(req, res, next) {
         /**
          * function that response single brand item as per the id
          */
-        const result = await brand.GetBrandById(req.query.id);
-        if(result){
+        try {
+            const result = await brand.GetBrandById(req.query.id);
             res.send(result);
+        } catch (error) {
+            next(error);
         }
-        else{
-            res.send("Error");
-        }
-
     }
 
-    async UpdateBrandbyId(req,res,next){
+    async UpdateBrandbyId(req, res, next) {
         /**
          * update the content of brand as per the id provided
          */
+        try{
         const updatedData = req.body;
-        const updatedResult = await brand.UpdateBrandById(req.query.id,updatedData);
-        if(updatedResult){
+        const updatedResult = await brand.UpdateBrandById(req.query.id, updatedData);
             res.send(updatedResult);
-        }
-        else{
-            res.send("Error");
+        } catch(error){
+            next(error);
         }
     }
 
-    async DeleteBrandById(req,res,next){
+    async DeleteBrandById(req, res, next) {
         /**
          * functions sends the deleted data information to the user
          */
+        try{
         const result = await brand.DeleteBrandById(req.query.id);
-        if(result){
             res.send(result);
-        }
-        else{
-            res.send("Error in deleting the data.");
+        } catch(error) {
+            next(error);
         }
     }
 }
