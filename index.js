@@ -6,14 +6,7 @@ import vendorRoutes from './routers/vendors.js';
 import { ErrorHandler } from './middleware/errorHandler.js';
 import bodyParser from 'body-parser';
 import userRouter from './routers/user.js';
-import { fileURLToPath } from 'url';
-import path from 'path';
 
-
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename);
-console.log("dir name = ",path.join(__dirname,'/images/profile_picture'));
 
 const app = express();
 app.use('/images',express.static('images'));
