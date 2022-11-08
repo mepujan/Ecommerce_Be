@@ -1,6 +1,5 @@
 import Cart from '../model/cart.js';
 import mongoose from 'mongoose';
-import cart from '../model/cart.js';
 
 export class CartServices{
     async AddProductToCart(product){ 
@@ -14,20 +13,23 @@ export class CartServices{
            const cart = new Cart();
            cart.user = mongoose.Types.ObjectId(product['user']);
            cart.product.push(mongoose.Types.ObjectId(product['product']));
-           return await cart.save();
+           await cart.save();
         }
-        return await Cart.findOneAndUpdate(
-            {
-                user:mongoose.Types.ObjectId(product['user'])
-            },
-            {
-                "$push": {product : mongoose.Types.ObjectId(product['product'])}
-            },
-            {
-                new:true
-            }
-           
-            )
+        else{
+            await Cart.findOneAndUpdate(
+                {
+                    user:mongoose.Types.ObjectId(product['user'])
+                },
+                {
+                    "$push": {product : mongoose.Types.ObjectId(product['product'])}
+                },
+                {
+                    new:true
+                }
+            
+                )
+        }
+        return await this.GetAllCartData(product['user']);
     }
 
     async GetAllCartData(user_id){
@@ -65,7 +67,7 @@ export class CartServices{
          * function that takes user_id and product_id as an argument and 
          * remove the product as per the product_id if that id is in cart
          */
-        return await Cart.findOneAndUpdate(
+        await Cart.findOneAndUpdate(
             {user:user_id},
             {
                 $pull:{product: mongoose.Types.ObjectId(product_id)}
@@ -77,5 +79,6 @@ export class CartServices{
             
 
         )
+        return await this.GetAllCartData(user_id);
     }
 }
