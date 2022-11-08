@@ -5,7 +5,8 @@ import {
 
 const CartSchema = new mongoose.Schema({
     product: {
-        type: Schema.Types.ObjectId,
+        type: Array,
+        default:[],
         ref: 'Product'
     },
     user: {
