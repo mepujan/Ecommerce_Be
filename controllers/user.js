@@ -44,7 +44,6 @@ export class UserController {
 
     async UpdateUserById(req,res,next){
         try{
-            console.log(req.body);
             const updatedData = await userService.UpdateUserById(req.query.id,req.body);
             res.send(updatedData);
         }catch(error){

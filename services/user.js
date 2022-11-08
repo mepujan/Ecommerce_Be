@@ -24,10 +24,7 @@ export class UserService{
             country:req.body.country,
             dob:req.body.dob,
             profile_picture_url : path.join(config.host,req.file.path)
-            // profile_picture:req.file.path
         });
-        const salt = await bcrypt.genSalt(10);
-        user.password = await bcrypt.hash(user.password,salt);
         return await user.save();
     }
 

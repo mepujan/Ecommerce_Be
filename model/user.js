@@ -2,6 +2,7 @@ import mongoose, {
     Schema
 } from "mongoose";
 import isEmail from 'validator/lib/isEmail.js';
+import bcrypt from 'bcrypt';
 
 const UserSchema = new Schema({
     first_name: {
@@ -62,5 +63,27 @@ const UserSchema = new Schema({
         contentType: String,
     }
 });
+
+UserSchema.pre('save',function(next){
+    let user = this;
+    console.log("password= ",user.password);
+    if (!user.isModified('password')) return next();
+    bcrypt.genSalt(10,function(error,salt){
+        if (error){
+            return next(error)
+        }
+        bcrypt.hash(user.password,salt,function(error,hash){
+            if(error){
+                return next(error);
+            }
+            user.password = hash;
+            next()
+        })
+    })
+})
+
+UserSchema.pre('findOneAndUpdate', function () {
+    this._update.password = bcrypt.hashSync(this._update.password, 10)
+  })
 
 export default mongoose.model('User', UserSchema);
