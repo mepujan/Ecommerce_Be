@@ -10,14 +10,14 @@ const userController = new UserController();
 const uploadProfileImage = multer({storage:ProfilePictureStorage});
 
 
-userRouter.post('/signup',validate(UserValidatior.CreateOrUpdateUserValidator),
+userRouter.post('/signup',
                  uploadProfileImage.single("profile_picture"),userController.CreateNewUser);
 
 userRouter.get('/users',userController.GetAllUsersAccounts);
 
 userRouter.get('/user/id',userController.GetUserById);
 userRouter.delete('/user/delete',userController.DeleteUserById);
-userRouter.put('/user/update',validate(UserValidatior.CreateOrUpdateUserValidator),
+userRouter.put('/user/update',
                   uploadProfileImage.single("profile_picture"),userController.UpdateUserById);
 
 

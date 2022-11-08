@@ -6,7 +6,7 @@ export const UserValidatior = {
             first_name : Joi.string().required(),
             middle_name : Joi.string(),
             last_name : Joi.string().required(),
-            email:Joi.string().email().required(),
+            email:Joi.string().required(),
             username:Joi.string().required(),
             password: Joi.string().required(),
             street_name:Joi.string().required(),
@@ -15,7 +15,7 @@ export const UserValidatior = {
             state:Joi.string().required(),
             country:Joi.string().required(),
             dob:Joi.string().required(),
-            profile_picture_url : Joi.string()
+            profile_picture_url : Joi.string(),
         })
     }
 }

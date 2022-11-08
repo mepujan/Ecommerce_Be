@@ -3,6 +3,7 @@ import ConnectionDB from './db.js';
 import config  from './configurations/config.js';
 import routes from './routers/brand.js';
 import vendorRoutes from './routers/vendors.js';
+import authRouter from './routers/auth.js';
 import { ErrorHandler } from './middleware/errorHandler.js';
 import bodyParser from 'body-parser';
 import userRouter from './routers/user.js';
@@ -21,8 +22,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(routes);
 app.use(vendorRoutes);
-app.use(ErrorHandler);
 app.use(userRouter);
+app.use(authRouter);
+app.use(ErrorHandler);
+
 
 const Start = async () => {
     // server setup
