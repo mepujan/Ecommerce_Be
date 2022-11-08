@@ -8,6 +8,7 @@ import { ErrorHandler } from './middleware/errorHandler.js';
 import bodyParser from 'body-parser';
 import userRouter from './routers/user.js';
 import productRouter from './routers/products.js';
+import cartRouter from './routers/cart.js';
 
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(vendorRoutes);
 app.use(userRouter);
 app.use(authRouter);
 app.use(productRouter);
+app.use(cartRouter);
 app.use(ErrorHandler);
 
 
