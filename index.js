@@ -7,6 +7,7 @@ import authRouter from './routers/auth.js';
 import { ErrorHandler } from './middleware/errorHandler.js';
 import bodyParser from 'body-parser';
 import userRouter from './routers/user.js';
+import productRouter from './routers/products.js';
 
 
 const app = express();
@@ -24,6 +25,7 @@ app.use(routes);
 app.use(vendorRoutes);
 app.use(userRouter);
 app.use(authRouter);
+app.use(productRouter);
 app.use(ErrorHandler);
 
 
