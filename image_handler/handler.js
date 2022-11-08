@@ -4,7 +4,7 @@ import path from 'path';
 //saves product images inside images/product_images directory
 export const ProductStorage = multer.diskStorage({
     destination: (req,file,cb)=>{
-        cb(null,'images/products_images');
+        cb(null,'images/products_image');
     },
     filename:(req,file,cb)=>{
         cb(null,Date.now() + path.extname(file.originalname))

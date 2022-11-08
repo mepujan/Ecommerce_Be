@@ -6,13 +6,24 @@ import vendorRoutes from './routers/vendors.js';
 import { ErrorHandler } from './middleware/errorHandler.js';
 import bodyParser from 'body-parser';
 import userRouter from './routers/user.js';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
+console.log("dir name = ",path.join(__dirname,'/images/profile_picture'));
 
 const app = express();
+app.use('/images',express.static('images'));
+
+//app.use('/images',express.static(path.join(__dirname,'images'))); -- can also be done this way
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('images'));
+
+
 
 
 app.use(routes);
@@ -33,5 +44,5 @@ const Start = async () => {
         console.log("Failed to Connect to Database. Server is not Running");
     }
 };
-
 Start();
+
