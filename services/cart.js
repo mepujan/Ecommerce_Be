@@ -30,6 +30,10 @@ export class CartServices{
     }
 
     async GetAllCartData(user_id){
+        /**
+         * function that takes user_id as an argument and returns list of data
+         * that matches the user_id
+        */
         return await Cart.aggregate([
             {$match:{user : mongoose.Types.ObjectId(user_id)}},
             {
