@@ -24,8 +24,11 @@ export class CartController{
         }catch(error){next(error)}
     }
 
-    async DeleteProductFromCartById(req,res,next){
+    async DeleteProductFromCartByProductId(req,res,next){
         //function that delete product available on cart of user
-        try{}catch(error){next(error)}
+        try{
+            const result = await cartService.DeleteProductFromCartByProductId(req.query.user_id,req.query.product_id);
+            res.send(result);
+        }catch(error){next(error)}
     }
 }

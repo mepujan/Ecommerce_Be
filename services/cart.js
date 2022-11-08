@@ -1,5 +1,6 @@
 import Cart from '../model/cart.js';
 import mongoose from 'mongoose';
+import cart from '../model/cart.js';
 
 export class CartServices{
     async AddProductToCart(product){ 
@@ -56,5 +57,25 @@ export class CartServices{
                 }
             }
         ])
+    }
+
+
+    async DeleteProductFromCartByProductId(user_id,product_id){
+        /**
+         * function that takes user_id and product_id as an argument and 
+         * remove the product as per the product_id if that id is in cart
+         */
+        return await Cart.findOneAndUpdate(
+            {user:user_id},
+            {
+                $pull:{product: mongoose.Types.ObjectId(product_id)}
+            },
+            
+            {
+                new : true
+            },
+            
+
+        )
     }
 }
