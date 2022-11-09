@@ -13,8 +13,9 @@ const uploadProductImage = multer({storage:ProductStorage});
 // const validator = createValidator();
 productRouter.post('/product/create',uploadProductImage.single('image'),productController.CreateNewProduct);
 productRouter.get('/products',productController.GetAllProducts);
-productRouter.get('/product/id',productController.GetProductById);
+productRouter.get('/product/:product_slug/id',productController.GetProductById);
 productRouter.put('/product/update',uploadProductImage.single('image'),productController.UpdateproductById);
 productRouter.delete('/product/delete',productController.DeleteproductById);
+productRouter.get('/products/',productController.SearchProductByName);
 
 export default productRouter;

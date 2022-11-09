@@ -92,4 +92,34 @@ export class ProductService{
         //function that find the data and delete it.
         return await Product.findByIdAndDelete(id);
     }
+
+
+    async SearchProductByName(productName){
+        //List all data that matches the product name
+        return await Product.aggregate([
+            {$match:{product_name: productName}},
+            {
+                $lookup:{
+                    from:'vendors',
+                    localField:'vendor',
+                    foreignField: '_id',
+                    as:'vendor'
+                }
+            },
+            {
+                $unwind :'$vendor'
+            },
+            {
+                $lookup:{
+                    from:'brands',
+                    localField:'brand',
+                    foreignField: '_id',
+                    as:'brand'
+                }
+            },
+            {
+                $unwind :'$brand'
+            },
+        ]); 
+    }
 }

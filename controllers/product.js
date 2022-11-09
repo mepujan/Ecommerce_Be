@@ -64,4 +64,11 @@ export class ProductController{
             next(error);
         }
     }
+
+    async SearchProductByName(req,res,next){
+        try{
+            const results = await productService.SearchProductByName(req.query.product_name);
+            res.send(results);
+        }catch(error){next(error);}
+    }
 }

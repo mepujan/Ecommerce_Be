@@ -10,7 +10,7 @@ export class CartController{
         try{
             const result = await cartService.AddProductToCart(req.body);
             res.send(result);
-        }catch(error){next(error)}
+        }catch(error){next(error);}
     }
 
     async ViewCart(req,res,next){
@@ -21,7 +21,7 @@ export class CartController{
             const user_id = req.body.user_id;
             const results = await cartService.GetAllCartData(user_id);
             res.send(results);
-        }catch(error){next(error)}
+        }catch(error){next(error);}
     }
 
     async DeleteProductFromCartByProductId(req,res,next){
@@ -29,6 +29,6 @@ export class CartController{
         try{
             const result = await cartService.DeleteProductFromCartByProductId(req.query.user_id,req.query.product_id);
             res.send(result);
-        }catch(error){next(error)}
+        }catch(error){next(error);}
     }
 }
