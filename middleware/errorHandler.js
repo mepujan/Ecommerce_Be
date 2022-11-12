@@ -4,8 +4,7 @@ export const ErrorHandler = (err, req, res, next) => {
     res.status(errStatus).json({
         success: false,
         status: errStatus,
-        message: errMsg,
-        stack: process.env.NODE_ENV === 'development' ? err.stack : {}
+        message: errMsg
     })
 }
 

@@ -8,10 +8,10 @@ export class VendorController{
          */
         try{
             const result = await vendorServices.CreateNewVendor(req.body);
-            res.send(result);
+            res.json(result);
         }
         catch(error){
-            next(error);
+            res.status(401).json(error);
         }
     }
 

@@ -6,7 +6,7 @@ const VendorSchema = new Schema({
     name: {
         type: String,
         unique: true,
-        required: true
+        required: "Name is required"
     }
 });
 
