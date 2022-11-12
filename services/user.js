@@ -10,21 +10,8 @@ export class UserService{
         /**
          * function that create new user and save it to database
          */
-        const user = new User({
-            first_name : req.body.first_name,
-            middle_name : req.body.middle_name,
-            last_name : req.body.last_name,
-            email:req.body.email,
-            username:req.body.username,
-            password: req.body.password,
-            street_name:req.body.street_name,
-            postal_code:req.body.postal_code,
-            city_name:req.body.city_name,
-            state:req.body.state,
-            country:req.body.country,
-            dob:req.body.dob,
-            profile_picture_url : path.join(config.host,req.file.path)
-        });
+        const user = new User(req.body);
+        user.profile_picture_url = path.join(config.host,req.file.path);
         return await user.save();
     }
 

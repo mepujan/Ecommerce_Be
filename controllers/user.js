@@ -34,7 +34,6 @@ export class UserController {
          * function that response the single user details as per the userid provided
          */
         try{
-            console.log(req.query.id);
             const result = await userService.GetUserById(req.query.id);
             res.send(result);
         }catch(error){

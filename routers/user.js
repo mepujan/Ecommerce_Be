@@ -8,8 +8,7 @@ const userController = new UserController();
 const uploadProfileImage = multer({storage:ProfilePictureStorage});
 
 
-userRouter.post('/signup',
-                 uploadProfileImage.single("profile_picture"),userController.CreateNewUser);
+userRouter.post('/signup',uploadProfileImage.single("profile_picture"),userController.CreateNewUser);
 
 userRouter.get('/users',userController.GetAllUsersAccounts);
 
