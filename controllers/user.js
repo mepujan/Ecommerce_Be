@@ -1,4 +1,6 @@
 import { UserService } from "../services/user.js";
+import jwt from "jsonwebtoken";
+import config from "../configurations/config.js";
 
 const userService = new UserService();
 
@@ -9,7 +11,8 @@ export class UserController {
          */
         try{
             const result = await userService.CreateNewUser(req);
-            res.status(201).json(result);
+            const token = jwt.sign({username: result.username,id: result._id,email :result.email},config.secret_key);
+            res.status(201).json({user: result, token:token });
         }catch(error){
             next(error);
         }

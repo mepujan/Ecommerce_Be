@@ -1,5 +1,4 @@
 import User from "../model/user.js";
-import bcrypt from 'bcrypt';
 import config from "../configurations/config.js";
 import path from 'path';
 import user from "../model/user.js";
