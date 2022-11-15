@@ -5,7 +5,7 @@ import mongoose, {
 const VendorSchema = new Schema({
     name: {
         type: String,
-        unique: true,
+        unique: [true,"Vendor Already Exist"],
         required: "Name is required"
     }
 });

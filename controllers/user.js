@@ -9,7 +9,7 @@ export class UserController {
          */
         try{
             const result = await userService.CreateNewUser(req);
-            res.send(result);
+            res.status(201).json(result);
         }catch(error){
             next(error);
         }
@@ -22,7 +22,7 @@ export class UserController {
          */
         try{
             const results = await userService.GetAllUsersAccounts();
-            res.send(results);
+            res.json(results);
 
         }catch(error){
             next(error);
@@ -35,7 +35,7 @@ export class UserController {
          */
         try{
             const result = await userService.GetUserById(req.query.id);
-            res.send(result);
+            res.json(result);
         }catch(error){
             next(error);
         }
@@ -44,7 +44,7 @@ export class UserController {
     async UpdateUserById(req,res,next){
         try{
             const updatedData = await userService.UpdateUserById(req.query.id,req.body);
-            res.send(updatedData);
+            res.json(updatedData);
         }catch(error){
             next(error);
         }
@@ -58,7 +58,7 @@ export class UserController {
          */
         try{
             const deletedUser = await userService.DeleteUserById(req.query.id);
-            res.send(deletedUser);
+            res.json(deletedUser);
         }catch(error){
             next(error);
         }
