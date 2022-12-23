@@ -8,7 +8,7 @@ export class VendorController{
          */
         try{
             const result = await vendorServices.CreateNewVendor(req.body);
-            res.send(result);
+            res.status(201).json(result);
         }
         catch(error){
             next(error);
@@ -22,7 +22,7 @@ export class VendorController{
          */
         try{
             const result = await vendorServices.GetAllVendorsList();
-            res.send(result);
+            res.json(result);
         }
         catch(error){
             next(error);
@@ -35,7 +35,7 @@ export class VendorController{
          */
         try{
             const result = await vendorServices.GetVendorById(req.query.id);
-            res.send(result);
+            res.json(result);
         }catch(error){
             next(error);
         }
@@ -48,7 +48,7 @@ export class VendorController{
          */
         try{
             const updatedResult = await vendorServices.UpdateVendorById(req.query.id,req.body);
-            res.send(updatedResult);
+            res.json(updatedResult);
         }catch(error){
             next(error);
         }
@@ -62,7 +62,7 @@ export class VendorController{
          */
         try{
             const deletedResult = await vendorServices.DeleteVendorById(req.query.id);
-            res.send(deletedResult);
+            res.json(deletedResult);
         }catch(error){
             next(error);
         }

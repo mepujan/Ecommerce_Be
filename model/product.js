@@ -5,11 +5,11 @@ import mongoose,{
 const ProductModelSchema = new mongoose.Schema({
     product_name: {
         type: String,
-        require: true
+        required: true
     },
     price: {
         type: Number,
-        required: true
+        required: "Price is required"
     },
     vendor: {
         type: Schema.Types.ObjectId,

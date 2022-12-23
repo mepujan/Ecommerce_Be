@@ -9,7 +9,7 @@ export class CartController{
          */
         try{
             const result = await cartService.AddProductToCart(req.body);
-            res.send(result);
+            res.status(201).json(result);
         }catch(error){next(error);}
     }
 
@@ -20,7 +20,7 @@ export class CartController{
         try{
             const user_id = req.body.user_id;
             const results = await cartService.GetAllCartData(user_id);
-            res.send(results);
+            res.json(results);
         }catch(error){next(error);}
     }
 
@@ -28,7 +28,7 @@ export class CartController{
         //function that delete product available on cart of user
         try{
             const result = await cartService.DeleteProductFromCartByProductId(req.query.user_id,req.query.product_id);
-            res.send(result);
+            res.json(result);
         }catch(error){next(error);}
     }
 }

@@ -13,7 +13,7 @@ export class BrandController {
         */
         try {
             const result = await brand.CreateNewBrand(req.body);
-            res.send(result);
+            res.status(201).json(result);
         } catch (error) {
             next(error);
         }
@@ -27,6 +27,7 @@ export class BrandController {
         try {
             const results = await brand.GetAllBrandsList();
             res.send(results?results:[])
+
         } catch (error) {
             next(error);
         }
@@ -40,7 +41,7 @@ export class BrandController {
          */
         try {
             const result = await brand.GetBrandById(req.query.id);
-            res.send(result);
+            res.json(result);
         } catch (error) {
             next(error);
         }
@@ -53,7 +54,7 @@ export class BrandController {
         try{
         const updatedData = req.body;
         const updatedResult = await brand.UpdateBrandById(req.query.id, updatedData);
-            res.send(updatedResult);
+            res.json(updatedResult);
         } catch(error){
             next(error);
         }
@@ -65,7 +66,7 @@ export class BrandController {
          */
         try{
         const result = await VendorServices.DeleteBrandById(req.query.id);
-            res.send(result);
+            res.json(result);
         } catch(error) {
             next(error);
         }

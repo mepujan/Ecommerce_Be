@@ -1,4 +1,6 @@
 import { UserService } from "../services/user.js";
+import jwt from "jsonwebtoken";
+import config from "../configurations/config.js";
 
 const userService = new UserService();
 
@@ -9,7 +11,8 @@ export class UserController {
          */
         try{
             const result = await userService.CreateNewUser(req);
-            res.send(result);
+            const token = jwt.sign({username: result.username,id: result._id,email :result.email},config.secret_key);
+            res.status(201).json({user: result, token:token });
         }catch(error){
             next(error);
         }
@@ -22,7 +25,7 @@ export class UserController {
          */
         try{
             const results = await userService.GetAllUsersAccounts();
-            res.send(results);
+            res.json(results);
 
         }catch(error){
             next(error);
@@ -34,9 +37,8 @@ export class UserController {
          * function that response the single user details as per the userid provided
          */
         try{
-            console.log(req.query.id);
             const result = await userService.GetUserById(req.query.id);
-            res.send(result);
+            res.json(result);
         }catch(error){
             next(error);
         }
@@ -45,7 +47,7 @@ export class UserController {
     async UpdateUserById(req,res,next){
         try{
             const updatedData = await userService.UpdateUserById(req.query.id,req.body);
-            res.send(updatedData);
+            res.json(updatedData);
         }catch(error){
             next(error);
         }
@@ -59,7 +61,7 @@ export class UserController {
          */
         try{
             const deletedUser = await userService.DeleteUserById(req.query.id);
-            res.send(deletedUser);
+            res.json(deletedUser);
         }catch(error){
             next(error);
         }

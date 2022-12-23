@@ -58,7 +58,7 @@ export class ProductService{
                 $lookup:{
                     from:'vendors',
                     localField:'vendor',
-                    foreignField: '_id',
+                    foreignField: '_id', 
                     as:'vendor'
                 }
             },

@@ -9,7 +9,7 @@ export class ProductController{
          */
         try{
             const result = await productService.CreateNewProduct(req);
-            res.send(result);
+            res.status(201).json(result);
         }catch(error){
             next(error);
         }
@@ -21,7 +21,7 @@ export class ProductController{
          */
         try{
             const result = await productService.GetAllProducts();
-            res.send(result);
+            res.json(result);
         }catch(error){
             next(error);
         }
@@ -33,7 +33,7 @@ export class ProductController{
          */
         try{
             const result = await productService.GetProductById(req.query.id);
-            res.send(result);
+            res.json(result);
         }catch(error){
             next(error);
         }
@@ -45,7 +45,7 @@ export class ProductController{
          */
         try{
             const result = await productService.UpdateProductById(req.query.id,req.body);
-            res.send(result);
+            res.json(result);
 
         }catch(error){
             next(error);
@@ -59,7 +59,7 @@ export class ProductController{
          */
         try{
             const result = await productService.DeleteProductById(req.query.id);
-            res.send(result);
+            res.json(result);
         }catch(error){
             next(error);
         }
@@ -68,7 +68,7 @@ export class ProductController{
     async SearchProductByName(req,res,next){
         try{
             const results = await productService.SearchProductByName(req.query.product_name);
-            res.send(results);
+            res.json(results);
         }catch(error){next(error);}
     }
 }

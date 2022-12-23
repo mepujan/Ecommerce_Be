@@ -9,9 +9,11 @@ import bodyParser from 'body-parser';
 import userRouter from './routers/user.js';
 import productRouter from './routers/products.js';
 import cartRouter from './routers/cart.js';
+import cors from 'cors';
 
 
 const app = express();
+app.use(cors());
 app.use('/images',express.static('images'));
 
 //app.use('/images',express.static(path.join(__dirname,'images'))); -- can also be done this way
