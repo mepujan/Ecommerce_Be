@@ -26,7 +26,7 @@ export class BrandController {
          */
         try {
             const results = await brand.GetAllBrandsList();
-            res.send(results)
+            res.send(results?results:[])
         } catch (error) {
             next(error);
         }
